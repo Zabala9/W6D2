@@ -5,12 +5,16 @@ require 'active_support/inflector'
 
 class SQLObject
   def self.columns
-    DBConnection.execute(<<-SQL)
+    array = []
+
+    todo = DBConnection.execute2(<<-SQL)
       SELECT *
       FROM #{self.table_name}
-      LIMIT 1
     SQL
-    # return result = DBConnection.execute.to_sym
+
+    arr = todo[0]
+    arr.each { |ele| array << ele.to_sym }
+    return array
   end
 
   def self.finalize!
