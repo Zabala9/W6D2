@@ -12,11 +12,11 @@ class SQLObject
   end
 
   def self.table_name=(table_name)
-    # ...
+    return self.name.downcase + "s"
   end
 
   def self.table_name
-    
+    return self.name.downcase + "s"
   end
 
   def self.all
