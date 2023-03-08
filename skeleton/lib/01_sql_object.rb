@@ -5,7 +5,12 @@ require 'active_support/inflector'
 
 class SQLObject
   def self.columns
-    # ...
+    DBConnection.execute(<<-SQL)
+      SELECT *
+      FROM #{self.table_name}
+      LIMIT 1
+    SQL
+    # return result = DBConnection.execute.to_sym
   end
 
   def self.finalize!

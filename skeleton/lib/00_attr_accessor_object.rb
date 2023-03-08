@@ -9,7 +9,7 @@ class AttrAccessorObject
       # define_method("#{name}=") do |ele|
       #   instance_variable_set("@#{name}", ele)
       # end
-      define_method("#{name}=") { |ele| instance_variable_set("@#{name}", ele) }
+            define_method("#{name}=") { |ele| instance_variable_set("@#{name}", ele) }
     end
   end
 end
